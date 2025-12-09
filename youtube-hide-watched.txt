@@ -1,19 +1,14 @@
 ! Title: Hide YT watched videos
-! Description: Hide watched videos (90% and up) from Home, Subscriptions Channels and Watch
+! Description: Hide any partially watched videos from Home, Subscriptions Channels and Watch
 ! Version: 2025.09.15
 ! Last modified: 2025-09-15 17:24
 ! Expires: 2 weeks (update frequency)
 ! Homepage: https://github.com/Norsagir/adguard-custom-filters
 ! License: https://github.com/Norsagir/adguard-custom-filters/blob/main/LICENSE.md
 
-! Youtube - Hide watched videos (90% and up)
-! Now, hiding only watched videos on Home, Subscriptions, Channels and Watch part of YT.
+! Youtube - Hide any partially watched videos
+! Now, hiding any partially watched videos on Home, Subscriptions, Channels and Watch part of YT.
 ! Uncomment Search and Playlists if you want to.
-
-! If you want to hide only 100% watched videos, delete the part below on each line :
-! ,[style^="width: 9"]:not([style^="width: 9%"])
-! If you want to hide 80% watched videos, add the part below on each line :
-! ,[style^="width: 8"]:not([style^="width: 8%"])
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -22,36 +17,36 @@
 
 ! Home
 ! 2025-09 GUI
-youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment))
 ! OLD GUI
-youtube.com##[page-subtype="home"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="home"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress))
 
 ! Subscriptions
 ! 2025-09 GUI
-youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has(yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has(yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment))
 ! OLD GUI
-youtube.com##[page-subtype="subscriptions"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="subscriptions"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress))
 
 ! Channels - Videos tab
-youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress))
 
 ! Channels - Home of a channel
 ! 2025-09 GUI
-youtube.com##[page-subtype="channels"] ytd-grid-video-renderer:has(ytd-thumbnail-overlay-resume-playback-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="channels"] ytd-grid-video-renderer:has(ytd-thumbnail-overlay-resume-playback-renderer:has(#progress))
 ! OLD GUI
-youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-grid-video-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-grid-video-renderer:has(#progress))
 
 ! Watch
 ! 2025-09 GUI
-[$path=/watch]youtube.com## yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+[$path=/watch]youtube.com## yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment)
 ! OLD GUI
-[$path=/watch]youtube.com## ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-compact-video-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+[$path=/watch]youtube.com## ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-compact-video-renderer:has(#progress))
 
 ! Search
-![$path=/results]youtube.com## ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-video-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+![$path=/results]youtube.com## ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-video-renderer:has(#progress))
 
 ! Playlists but not 'Watch Later'
-!youtube.com##[page-subtype="playlist"]:not(:matches-path(WL)) ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-playlist-video-renderer:has(#progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"]))))
+!youtube.com##[page-subtype="playlist"]:not(:matches-path(WL)) ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-playlist-video-renderer:has(#progress))
 
 
 !!!!!!!!!!!!!!!!!!!!!!
@@ -64,19 +59,19 @@ youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-ren
 ![$path]m.youtube.com## XXXXXXXXXXXXXXXX
 
 ! Subscriptions
-[$path=/feed/subscriptions]m.youtube.com## ytm-item-section-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+[$path=/feed/subscriptions]m.youtube.com## ytm-item-section-renderer:has(.thumbnail-overlay-resume-playback-progress)
 
 ! Channels - Videos tab
-[$path=/videos]m.youtube.com## ytm-rich-item-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+[$path=/videos]m.youtube.com## ytm-rich-item-renderer:has(.thumbnail-overlay-resume-playback-progress)
 
 ! Channels - Home of a channel
-[$path=/featured]m.youtube.com## ytm-compact-video-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+[$path=/featured]m.youtube.com## ytm-compact-video-renderer:has(.thumbnail-overlay-resume-playback-progress)
 
 ! Watch
-[$path=/watch]m.youtube.com## ytm-video-with-context-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+[$path=/watch]m.youtube.com## ytm-video-with-context-renderer:has(.thumbnail-overlay-resume-playback-progress)
 
 ! Search
-![$path=/results]m.youtube.com## ytm-item-section-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+![$path=/results]m.youtube.com## ytm-item-section-renderer:has(.thumbnail-overlay-resume-playback-progress)
 
 ! Playlists but not 'Watch Later'
-!m.youtube.com##:not(:matches-path(WL)) ytm-playlist-video-renderer:has(.thumbnail-overlay-resume-playback-progress:is([style="width: 100%;"],[style^="width: 9"]:not([style^="width: 9%"])))
+!m.youtube.com##:not(:matches-path(WL)) ytm-playlist-video-renderer:has(.thumbnail-overlay-resume-playback-progress)
