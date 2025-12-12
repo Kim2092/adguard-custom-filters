@@ -29,7 +29,7 @@ youtube.com##[page-subtype="subscriptions"] ytd-thumbnail-overlay-resume-playbac
 
 ! Channels - Videos tab
 ! 2025-09 GUI
-youtube.com##[page-subtype="channels"] ytd-rich-item-renderer:has(yt-lockup-view-model:has(.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment))
+youtube.com##[page-subtype="channels"] ytd-rich-item-renderer:has(ytd-thumbnail-overlay-resume-playback-renderer:has(#progress))
 ! OLD GUI
 youtube.com##[page-subtype="channels"] ytd-thumbnail-overlay-resume-playback-renderer:upward(ytd-rich-item-renderer:has(#progress))
 
